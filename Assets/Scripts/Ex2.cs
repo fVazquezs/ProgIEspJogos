@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestScript : MonoBehaviour
+public class Ex2 : MonoBehaviour
 {
     [Range(0.1f, 10f)]
     public float speed = 1;
-    public Transform objeto;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    private int direction = 1;
+
 
     // Update is called once per frame
     void Update()
     {
         Vector3 pos = transform.position;
-        pos.x += Time.deltaTime * speed;
+
+        if (!Physics.Raycast(new Ray(new Vector3(pos.x + direction, pos.y, pos.z), Vector3.down)))
+        {
+            direction *= -1;
+        }
+        pos.x += Time.deltaTime * speed * direction;
         transform.position = pos;
     }
+
 }

@@ -31,6 +31,7 @@ public class Ex3 : MonoBehaviour
         float zPos =  amplitud * Mathf.Sin(Mathf.PI / 2 * pos.x) * basePosition.z;
         pos.z = zPos;
        
+        transform.right = pos - transform.position;
         transform.position = pos;
     }
 }
